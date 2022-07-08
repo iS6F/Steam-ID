@@ -1,11 +1,10 @@
-import requests, random, string
-from bs4 import BeautifulSoup as bs
+import requests, random, string, bs4
 len = 3
 webhook = ""
 while True:
     id = ''.join(random.choices(string.ascii_uppercase + string.digits, k=len))
     request = requests.get(f'https://steamcommunity.com/id/{id}')
-    lxml = bs(request.content, 'lxml')
+    lxml = bs4.BeautifulSoup(request.content, 'lxml')
     title = lxml.find('title')
     list = title.text.split()
     if list[-1] == "Error":
