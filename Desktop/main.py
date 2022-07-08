@@ -1,9 +1,9 @@
 import requests, random, string
 from bs4 import BeautifulSoup as bs
-length = 3
+len = 3
 webhook = ""
 while True:
-    id = ''.join(random.choices(string.ascii_uppercase + string.digits, k=length))
+    id = ''.join(random.choices(string.ascii_uppercase + string.digits, k=len))
     request = requests.get(f'https://steamcommunity.com/id/{id}')
     lxml = bs(request.content, 'lxml')
     title = lxml.find('title')
